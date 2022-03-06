@@ -1,5 +1,4 @@
-This spring boot is a simple controller/service/dao using mybatis and postgresql library. It can be cloned using different docker environment variables to control
-the name of the Savings Service and the port used. For GET it use a Select from database. For PUT it will do a Update Returning using Postgresql feature.
+This spring boot is a simple controller/service/dao using mybatis and postgresql library. It can be cloned using different docker environment variables to control the name of the Savings Service and the port used. For GET it use a Select from database. For PUT it will do a Update Returning using Postgresql feature.
 
 
 #build and run standalone demo.
