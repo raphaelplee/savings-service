@@ -2,7 +2,7 @@ This spring boot is a simple controller/service/dao using mybatis and postgresql
 
 
 #build and run standalone demo.
-mvnw package && java -jar target/savings-service-0.0.1-SNAPSHOT.jar
+mvn package && java -jar target/savings-service-0.0.1-SNAPSHOT.jar
 
 
 #build the docker image for demo
