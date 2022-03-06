@@ -1,0 +1,33 @@
+#build and run standalone demo.
+mvnw package && java -jar target/savings-service-0.0.1-SNAPSHOT.jar
+
+
+#build the docker image for demo
+docker build -t demo/savings-service .
+
+
+#start dockers. Saving a use 8081 and Saving b use 8082.
+docker run -e "server.port=8081" -e "saving.account=a" -p 8081:8081 demo/savings-service
+docker run -e "server.port=8082" -e "saving.account=b" -p 8082:8082 demo/savings-service
+
+
+#sample call in curl
+curl --location --request GET 'http://localhost:8082/balance'
+
+curl --location --request PUT 'http://localhost:8082/balance' \
+--header 'Content-Type: application/json' \
+--data-raw '{"amount":-433.1}'
+
+
+#simple postgresql demo table
+CREATE TABLE account.savings
+(
+    account VARCHAR(5) PRIMARY KEY,
+    amount  numeric(32, 10),
+    UNIQUE (account)
+);
+
+
+#open postgresql for docker container
+add following at the top of C:\Program Files\PostgreSQL\14\data\pg_hba.conf
+host  all  all 0.0.0.0/0 md5
