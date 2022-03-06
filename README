@@ -1,3 +1,6 @@
+This spring boot is a simple controller/service/dao using mybatis and postgresql library. It can be cloned using different docker environment variables to controller the name of the Savings Service and the port used.
+
+
 #build and run standalone demo.
 mvnw package && java -jar target/savings-service-0.0.1-SNAPSHOT.jar
 
