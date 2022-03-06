@@ -1,8 +1,0 @@
-hello\controller\SavingsController.class
-hello\config\MainConfig.class
-hello\service\SavingsService.class
-hello\controller\dto\SavingDto.class
-hello\Application.class
-hello\dao\entity\Saving.class
-hello\dao\SavingsDao.class
-hello\service\impl\SavingServiceImpl.class
