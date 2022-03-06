@@ -1,5 +1,24 @@
 This spring boot is a simple controller/service/dao using mybatis and postgresql library. It can be cloned using different docker environment variables to control the name of the Savings Service and the port used. For GET it use a Select from database. For PUT it will do a Update Returning using Postgresql feature.
 
+#create postgresql demo table
+CREATE TABLE account.savings
+(
+    account VARCHAR(5) PRIMARY KEY,
+    amount  numeric(32, 10),
+    UNIQUE (account)
+);
+
+
+#open postgresql for docker container
+add following at the top of C:\Program Files\PostgreSQL\14\data\pg_hba.conf
+host  all  all 0.0.0.0/0 md5
+
+
+#set Postgresql url and credentials in /src/main/resources/application.properties. Example,
+spring.datasource.url=jdbc:postgresql://192.168.0.102:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=123456
+
 
 #build and run standalone demo.
 mvn package && java -jar target/savings-service-0.0.1-SNAPSHOT.jar
@@ -20,17 +39,3 @@ curl --location --request GET 'http://localhost:8082/balance'
 curl --location --request PUT 'http://localhost:8082/balance' \
 --header 'Content-Type: application/json' \
 --data-raw '{"amount":-433.1}'
-
-
-#simple postgresql demo table
-CREATE TABLE account.savings
-(
-    account VARCHAR(5) PRIMARY KEY,
-    amount  numeric(32, 10),
-    UNIQUE (account)
-);
-
-
-#open postgresql for docker container
-add following at the top of C:\Program Files\PostgreSQL\14\data\pg_hba.conf
-host  all  all 0.0.0.0/0 md5
